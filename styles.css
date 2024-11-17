@@ -1,0 +1,62 @@
+
+
+body
+{
+    background-color: #FFF7D1;
+}
+.conteneur
+{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-family: Ubuntu,"sans-serif";
+    font: 1.1em sans-serif;
+    
+}
+.titre
+{
+    color: black;
+    font-family: Ubuntu,"sans-serif";
+    font-size: 1.3em;
+}
+li
+{
+    list-style: none;
+}
+
+form
+{
+    width: 45%;
+    margin: auto;
+    border: 2px solid ;
+    border-radius: 20px;
+    padding: 15px;
+    color: white;
+    background-color: gray;
+}
+input[type="text"]
+{
+    height: 30px;
+    margin: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+input[type="submit"]
+{
+    margin-top: 10px;;
+    width: 100px;
+    height: 32px;
+    font-size: 1em;
+}
+label
+{
+    font-size: 1.1em;
+}
+.colonne
+{
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
