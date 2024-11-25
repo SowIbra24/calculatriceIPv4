@@ -54,7 +54,7 @@
     function calculateNetworkOrBroadcastAddress(int $subnetMask, string $ipAddress, string $mode): array //calculAdresse
     {
       $binaryOctets = [];
-      $ipOctets = explode('.', $ipAddress);
+      $ipOctets = ft_explode('.', $ipAddress);
 
       for ($i = 0; $i < 4; $i++) 
       {
@@ -67,7 +67,7 @@
         $binaryOctets[$i] = str_pad($binaryOctets[$i], 8, '0', STR_PAD_LEFT);
       }
       // Concaténe les 4 octets binaires pour former l'adresse IP binaire complète
-      $binaryAddress = implode('', $binaryOctets);
+      $binaryAddress = ft_implode('', $binaryOctets);
       // Applique le masque de sous-réseau (garde seulement les premiers bits du masque)
       $networkOrBroadcastBinary = substr($binaryAddress, 0, $subnetMask);
       // Compléte la chaîne binaire à 32 bits en fonction du mode (réseau ou diffusion)
@@ -83,7 +83,7 @@
       $resultIpAddress = [];
       for ($i = 0; $i < 4; $i++) 
       {
-        $resultIpAddress[$i] = bindec($binaryOctetsResult[$i]); // Converti chaque octet binaire en décimal
+        $resultIpAddress[$i] = ft_bindec($binaryOctetsResult[$i]); // Converti chaque octet binaire en décimal
       }
       return ($resultIpAddress);
     }
