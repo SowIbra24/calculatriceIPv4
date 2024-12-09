@@ -1,22 +1,22 @@
 <?php
 
-    function getFullSetsOfEight(string $masque): int
-    {
-		  //int	$count;
+  function getFullSetsOfEight(string $masque): int
+  {
+    //int	$count;
 
-      $count = 0;
-      while ($masque >= 8)
-      {
-        $count += 1;
-        $masque -= 8;
-      }
-      return ($count);
-    }
-
-    function extraBitsInSubnetMask(string $masque, int $fullBlocksOf8) 
+    $count = 0;
+    while ($masque >= 8)
     {
-		return ($masque - $fullBlocksOf8 * 8);
+      $count += 1;
+      $masque -= 8;
     }
+    return ($count);
+  }
+
+  function extraBitsInSubnetMask(string $masque, int $fullBlocksOf8) 
+  {
+    return ($masque - $fullBlocksOf8 * 8);
+  }
 
 	function getSubnetMaskValue(int $bitCount): int 
 	{
@@ -44,9 +44,11 @@
         $i++;
       }
       // Calculer le dernier octet si nécessaire
-      if ($fullSets < 4) 
-        $array[$fullSets] = getSubnetMaskValue(extraBitsInSubnetMask($masque, $fullSets + 1));
-      return ($array);
+      if ($fullSets < 4) {
+        $remainingBits = extraBitsInSubnetMask($masque, $fullSets);
+        $array[$fullSets] = getSubnetMaskValue($remainingBits);
+      }
+     return ($array);
     }
 
   
@@ -117,3 +119,29 @@
 		return $networkOrBroadcastAddress;
 	}
 
+function check_data($mask,$ip)
+{
+  if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+    die("Adresse IP invalide !");
+    }
+
+  if (!is_numeric($mask) || $mask < 0 || $mask > 32) {
+        die("Masque de sous-réseau invalide !");
+    }
+}
+
+function calculate_class($first)
+{
+  if ($first < 128) {
+    $classe = "A";
+    } elseif ($first < 192) {
+        $classe = "B";
+    } elseif ($first < 224) {
+        $classe = "C";
+    } elseif ($first < 240) {
+        $classe = "D (Multicast)";
+    } else {
+        $classe = "E (Réservée)";
+    }
+    return $classe;
+}
