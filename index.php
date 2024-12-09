@@ -24,13 +24,12 @@
                 <li>L'adresse de la première machine du réseau </li>
                 <li>L'adresse de la dernière machine du réseau </li>
                 <li>L'adresse de diffusion du réseau </li>
-                <li>L'adresse du réseau suivant </li>
                 <li>Dans quelle classe se trouve l'adresse ip </li>
             </ul>
         </div>
      
         <div class="formulaire">
-            <form action="index.php" method="GET">
+            <form action="affichage.php" method="GET">
                 <div class="colonne">
                     <label for="adress"> Entrer l'adresse ip  </label> 
                     <input type="text" name="adress" id="adress" placeholder="192.168.0.25"> </br>
@@ -42,10 +41,6 @@
                 
                 <input type="submit" value="calculer">
             </form>
-        </div>
-        
-        <div class="affichage">
-            
         </div>
      </div>        
   </body>
